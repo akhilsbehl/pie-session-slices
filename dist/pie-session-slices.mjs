@@ -346,9 +346,11 @@ async function ensureDb() {
 	if (unavailable) return false;
 	try {
 		mkdirSync(DB_DIR, { recursive: true });
-		duckdbMod ??= await import("duckdb");
+		const ns = await import("duckdb");
+		duckdbMod = ns.default ?? ns;
+		if (typeof duckdbMod.Database !== "function") throw new Error("duckdb Database export not found");
 		db = new duckdbMod.Database(DB_PATH);
-		await exec(db, `CREATE TABLE IF NOT EXISTS turns(
+		await exec(db, `CREATE TABLE IF NOT EXISTS slice_turns(
       session_id VARCHAR, turn_id VARCHAR, turn_idx INTEGER, seq INTEGER,
       kind VARCHAR, source_entry_id VARCHAR, payload VARCHAR,
       PRIMARY KEY (session_id, turn_id, seq))`);
@@ -380,13 +382,13 @@ async function sessionPipeline(sessionId) {
 async function saveTurns(sessionId, turns, pipeline) {
 	try {
 		if (!await ensureDb() || !db) return false;
-		await exec(db, `DELETE FROM turns WHERE session_id = ?`, sessionId);
+		await exec(db, `DELETE FROM slice_turns WHERE session_id = ?`, sessionId);
 		await exec(db, `DELETE FROM tool_results WHERE session_id = ?`, sessionId);
 		let seq = 0;
 		for (const t of turns) {
 			for (const r of t.records) {
 				seq += 1;
-				await exec(db, `INSERT INTO turns(session_id, turn_id, turn_idx, seq, kind, source_entry_id, payload)
+				await exec(db, `INSERT INTO slice_turns(session_id, turn_id, turn_idx, seq, kind, source_entry_id, payload)
            VALUES (?, ?, ?, ?, ?, ?, ?)`, sessionId, t.turnId, t.turnIdx, seq, r.kind, r.sourceEntryId, r.payload);
 			}
 			for (const tr of t.toolResults) await exec(db, `INSERT INTO tool_results(session_id, turn_id, seq, tool_name, call_id, text, is_error)
@@ -405,7 +407,7 @@ async function saveTurns(sessionId, turns, pipeline) {
 async function loadTurns(sessionId) {
 	try {
 		if (!await ensureDb() || !db) return null;
-		const recs = await rows(db, `SELECT turn_id, turn_idx, seq, kind, source_entry_id, payload FROM turns
+		const recs = await rows(db, `SELECT turn_id, turn_idx, seq, kind, source_entry_id, payload FROM slice_turns
             WHERE session_id = ? ORDER BY turn_idx, seq`, sessionId);
 		if (recs.length === 0) return null;
 		const tools = await rows(db, `SELECT turn_id, seq, tool_name, call_id, text, is_error FROM tool_results
@@ -519,7 +521,7 @@ async function runSlice(opts) {
 			turns = data.turns;
 			pipeline = data.pipeline;
 			projector = data.projector;
-			saveTurns(sessionId, turns, pipeline);
+			await saveTurns(sessionId, turns, pipeline);
 			source = "computed";
 		}
 	} else if (opts.manager) {
@@ -539,7 +541,7 @@ async function runSlice(opts) {
 			turns = data.turns;
 			pipeline = data.pipeline;
 			projector = data.projector;
-			saveTurns(sessionId, turns, pipeline);
+			await saveTurns(sessionId, turns, pipeline);
 			source = "computed";
 		}
 	} else throw new Error("No session source: pass sessionFile or run inside a live session.");

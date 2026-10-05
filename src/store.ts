@@ -57,10 +57,14 @@ export async function ensureDb(): Promise<boolean> {
   if (unavailable) return false;
   try {
     mkdirSync(DB_DIR, { recursive: true });
-    duckdbMod ??= (await import("duckdb")) as unknown as DuckDb;
+    // CJS/ESM interop: dynamic import of the CJS duckdb package yields a
+    // namespace; the constructor lives on .default (fallback: namespace itself).
+    const ns = (await import("duckdb")) as unknown as { default?: DuckDb } & Partial<DuckDb>;
+    duckdbMod = ns.default ?? (ns as unknown as DuckDb);
+    if (typeof duckdbMod.Database !== "function") throw new Error("duckdb Database export not found");
     const instance = new duckdbMod.Database(DB_PATH);
     db = instance;
-    await exec(db, `CREATE TABLE IF NOT EXISTS turns(
+    await exec(db, `CREATE TABLE IF NOT EXISTS slice_turns(
       session_id VARCHAR, turn_id VARCHAR, turn_idx INTEGER, seq INTEGER,
       kind VARCHAR, source_entry_id VARCHAR, payload VARCHAR,
       PRIMARY KEY (session_id, turn_id, seq))`);
@@ -104,7 +108,7 @@ export async function saveTurns(
 ): Promise<boolean> {
   try {
     if (!(await ensureDb()) || !db) return false;
-    await exec(db, `DELETE FROM turns WHERE session_id = ?`, sessionId);
+    await exec(db, `DELETE FROM slice_turns WHERE session_id = ?`, sessionId);
     await exec(db, `DELETE FROM tool_results WHERE session_id = ?`, sessionId);
     let seq = 0;
     for (const t of turns) {
@@ -112,7 +116,7 @@ export async function saveTurns(
         seq += 1;
         await exec(
           db,
-          `INSERT INTO turns(session_id, turn_id, turn_idx, seq, kind, source_entry_id, payload)
+          `INSERT INTO slice_turns(session_id, turn_id, turn_idx, seq, kind, source_entry_id, payload)
            VALUES (?, ?, ?, ?, ?, ?, ?)`,
           sessionId, t.turnId, t.turnIdx, seq, r.kind, r.sourceEntryId, r.payload,
         );
@@ -147,7 +151,7 @@ export async function loadTurns(sessionId: string): Promise<TurnData[] | null> {
     const recs = await rows<{
       turn_id: string; turn_idx: number; seq: number; kind: string;
       source_entry_id: string; payload: string;
-    }>(db, `SELECT turn_id, turn_idx, seq, kind, source_entry_id, payload FROM turns
+    }>(db, `SELECT turn_id, turn_idx, seq, kind, source_entry_id, payload FROM slice_turns
             WHERE session_id = ? ORDER BY turn_idx, seq`, sessionId);
     if (recs.length === 0) return null;
     const tools = await rows<{

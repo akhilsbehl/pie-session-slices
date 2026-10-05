@@ -111,7 +111,7 @@ export async function runSlice(
       turns = data.turns;
       pipeline = data.pipeline;
       projector = data.projector;
-      void saveTurns(sessionId, turns, pipeline);
+      await saveTurns(sessionId, turns, pipeline);
       source = "computed";
     }
   } else if (opts.manager) {
@@ -128,7 +128,7 @@ export async function runSlice(
       turns = data.turns;
       pipeline = data.pipeline;
       projector = data.projector;
-      void saveTurns(sessionId, turns, pipeline);
+      await saveTurns(sessionId, turns, pipeline);
       source = "computed";
     }
   } else {
