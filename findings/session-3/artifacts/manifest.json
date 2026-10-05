@@ -1,0 +1,266 @@
+[
+  {
+    "session": "2026-10-05T06-17-32-148Z_01a10ab5-d8f3-7713-bf19-51df5199a729.jsonl",
+    "pattern": "full",
+    "selector": {
+      "type": "full"
+    },
+    "includeToolResults": false,
+    "artifact": "slice-06-17-32-full.jsonl",
+    "path": "/tmp/pie-session-slice-BIPehc/slice-01a10ab5.jsonl",
+    "sessionId": "01a10ab5-d8f3-7713-bf19-51df5199a729",
+    "turns": 1,
+    "records": 2,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-05T06-17-32-148Z_01a10ab5-d8f3-7713-bf19-51df5199a729.jsonl",
+    "pattern": "full-tools",
+    "selector": {
+      "type": "full"
+    },
+    "includeToolResults": true,
+    "artifact": "slice-06-17-32-full-tools.jsonl",
+    "path": "/tmp/pie-session-slice-xIuIgs/slice-01a10ab5.jsonl",
+    "sessionId": "01a10ab5-d8f3-7713-bf19-51df5199a729",
+    "turns": 1,
+    "records": 2,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-05T06-17-32-148Z_01a10ab5-d8f3-7713-bf19-51df5199a729.jsonl",
+    "pattern": "last3",
+    "selector": {
+      "type": "last",
+      "n": 3
+    },
+    "includeToolResults": false,
+    "artifact": "slice-06-17-32-last3.jsonl",
+    "path": "/tmp/pie-session-slice-naNSU7/slice-01a10ab5.jsonl",
+    "sessionId": "01a10ab5-d8f3-7713-bf19-51df5199a729",
+    "turns": 1,
+    "records": 2,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-05T06-17-32-148Z_01a10ab5-d8f3-7713-bf19-51df5199a729.jsonl",
+    "pattern": "first2-tools",
+    "selector": {
+      "type": "first",
+      "n": 2
+    },
+    "includeToolResults": true,
+    "artifact": "slice-06-17-32-first2-tools.jsonl",
+    "path": "/tmp/pie-session-slice-McxuYp/slice-01a10ab5.jsonl",
+    "sessionId": "01a10ab5-d8f3-7713-bf19-51df5199a729",
+    "turns": 1,
+    "records": 2,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-04T05-13-54-486Z_01a10555-3c35-7791-a57e-8ebc591cb769.jsonl",
+    "pattern": "full",
+    "selector": {
+      "type": "full"
+    },
+    "includeToolResults": false,
+    "artifact": "slice-05-13-54-full.jsonl",
+    "path": "/tmp/pie-session-slice-PvUIdi/slice-01a10555.jsonl",
+    "sessionId": "01a10555-3c35-7791-a57e-8ebc591cb769",
+    "turns": 13,
+    "records": 64,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-04T05-13-54-486Z_01a10555-3c35-7791-a57e-8ebc591cb769.jsonl",
+    "pattern": "full-tools",
+    "selector": {
+      "type": "full"
+    },
+    "includeToolResults": true,
+    "artifact": "slice-05-13-54-full-tools.jsonl",
+    "path": "/tmp/pie-session-slice-TOJ19m/slice-01a10555.jsonl",
+    "sessionId": "01a10555-3c35-7791-a57e-8ebc591cb769",
+    "turns": 13,
+    "records": 193,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-04T05-13-54-486Z_01a10555-3c35-7791-a57e-8ebc591cb769.jsonl",
+    "pattern": "last3",
+    "selector": {
+      "type": "last",
+      "n": 3
+    },
+    "includeToolResults": false,
+    "artifact": "slice-05-13-54-last3.jsonl",
+    "path": "/tmp/pie-session-slice-a1HMPj/slice-01a10555.jsonl",
+    "sessionId": "01a10555-3c35-7791-a57e-8ebc591cb769",
+    "turns": 3,
+    "records": 20,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-04T05-13-54-486Z_01a10555-3c35-7791-a57e-8ebc591cb769.jsonl",
+    "pattern": "first2-tools",
+    "selector": {
+      "type": "first",
+      "n": 2
+    },
+    "includeToolResults": true,
+    "artifact": "slice-05-13-54-first2-tools.jsonl",
+    "path": "/tmp/pie-session-slice-bWibvi/slice-01a10555.jsonl",
+    "sessionId": "01a10555-3c35-7791-a57e-8ebc591cb769",
+    "turns": 2,
+    "records": 26,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-04T04-20-38-106Z_01a10524-7658-7791-a57e-8eb9be6aea62.jsonl",
+    "pattern": "full",
+    "selector": {
+      "type": "full"
+    },
+    "includeToolResults": false,
+    "artifact": "slice-04-20-38-full.jsonl",
+    "path": "/tmp/pie-session-slice-Vy6NRI/slice-01a10524.jsonl",
+    "sessionId": "01a10524-7658-7791-a57e-8eb9be6aea62",
+    "turns": 16,
+    "records": 34,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-04T04-20-38-106Z_01a10524-7658-7791-a57e-8eb9be6aea62.jsonl",
+    "pattern": "full-tools",
+    "selector": {
+      "type": "full"
+    },
+    "includeToolResults": true,
+    "artifact": "slice-04-20-38-full-tools.jsonl",
+    "path": "/tmp/pie-session-slice-eCbHFK/slice-01a10524.jsonl",
+    "sessionId": "01a10524-7658-7791-a57e-8eb9be6aea62",
+    "turns": 16,
+    "records": 54,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-04T04-20-38-106Z_01a10524-7658-7791-a57e-8eb9be6aea62.jsonl",
+    "pattern": "last3",
+    "selector": {
+      "type": "last",
+      "n": 3
+    },
+    "includeToolResults": false,
+    "artifact": "slice-04-20-38-last3.jsonl",
+    "path": "/tmp/pie-session-slice-Q44jDW/slice-01a10524.jsonl",
+    "sessionId": "01a10524-7658-7791-a57e-8eb9be6aea62",
+    "turns": 3,
+    "records": 6,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-10-04T04-20-38-106Z_01a10524-7658-7791-a57e-8eb9be6aea62.jsonl",
+    "pattern": "first2-tools",
+    "selector": {
+      "type": "first",
+      "n": 2
+    },
+    "includeToolResults": true,
+    "artifact": "slice-04-20-38-first2-tools.jsonl",
+    "path": "/tmp/pie-session-slice-nlaFcG/slice-01a10524.jsonl",
+    "sessionId": "01a10524-7658-7791-a57e-8eb9be6aea62",
+    "turns": 2,
+    "records": 5,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-09-21T20-31-53-559Z_01a0c5ab-00d6-74e0-aeef-a66de6a36b16.jsonl",
+    "pattern": "full",
+    "selector": {
+      "type": "full"
+    },
+    "includeToolResults": false,
+    "artifact": "slice-20-31-53-full.jsonl",
+    "path": "/tmp/pie-session-slice-gAaADl/slice-01a0c5ab.jsonl",
+    "sessionId": "01a0c5ab-00d6-74e0-aeef-a66de6a36b16",
+    "turns": 34,
+    "records": 80,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-09-21T20-31-53-559Z_01a0c5ab-00d6-74e0-aeef-a66de6a36b16.jsonl",
+    "pattern": "full-tools",
+    "selector": {
+      "type": "full"
+    },
+    "includeToolResults": true,
+    "artifact": "slice-20-31-53-full-tools.jsonl",
+    "path": "/tmp/pie-session-slice-tlf5is/slice-01a0c5ab.jsonl",
+    "sessionId": "01a0c5ab-00d6-74e0-aeef-a66de6a36b16",
+    "turns": 34,
+    "records": 117,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-09-21T20-31-53-559Z_01a0c5ab-00d6-74e0-aeef-a66de6a36b16.jsonl",
+    "pattern": "last3",
+    "selector": {
+      "type": "last",
+      "n": 3
+    },
+    "includeToolResults": false,
+    "artifact": "slice-20-31-53-last3.jsonl",
+    "path": "/tmp/pie-session-slice-dcA7FV/slice-01a0c5ab.jsonl",
+    "sessionId": "01a0c5ab-00d6-74e0-aeef-a66de6a36b16",
+    "turns": 3,
+    "records": 8,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  },
+  {
+    "session": "2026-09-21T20-31-53-559Z_01a0c5ab-00d6-74e0-aeef-a66de6a36b16.jsonl",
+    "pattern": "first2-tools",
+    "selector": {
+      "type": "first",
+      "n": 2
+    },
+    "includeToolResults": true,
+    "artifact": "slice-20-31-53-first2-tools.jsonl",
+    "path": "/tmp/pie-session-slice-QgGA9d/slice-01a0c5ab.jsonl",
+    "sessionId": "01a0c5ab-00d6-74e0-aeef-a66de6a36b16",
+    "turns": 2,
+    "records": 8,
+    "pipeline": "wire",
+    "projector": "buildSessionProjection",
+    "source": "computed"
+  }
+]
