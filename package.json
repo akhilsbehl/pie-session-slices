@@ -7,9 +7,19 @@
   "sideEffects": false,
   "main": "./dist/pie-session-slices.mjs",
   "types": "./dist/index.d.mts",
-  "files": ["dist", "README.md", "LICENSE"],
-  "engines": {"node": ">=22.19.0"},
-  "pi": {"extensions": ["./dist/pie-session-slices.mjs"]},
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "pi": {
+    "extensions": [
+      "./dist/pie-session-slices.mjs"
+    ]
+  },
   "scripts": {
     "build": "tsdown --clean && mv dist/index.mjs dist/pie-session-slices.mjs && mv dist/index.d.mts dist/pie-session-slices.d.mts",
     "typecheck": "tsc --noEmit",
@@ -27,5 +37,10 @@
     "tsdown": "0.22.13",
     "typescript": "7.0.2"
   },
-  "peerDependencies": {"@earendil-works/pi-coding-agent": "^0.80.10 || ^0.81.0"}
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.80.10 || ^0.81.0"
+  },
+  "allowScripts": {
+    "duckdb@1.4.4": true
+  }
 }
